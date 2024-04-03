@@ -1,14 +1,9 @@
 ﻿@model IEnumerable<Person>   //use for just type safe
-<!DOCTYPE html>
-<html>
-<head>
-   @*  <title>@ViewData["appTitle"]</title> *@
-    <title>@ViewBag.appTitle</title>    
-    @* ViewBag gives better way to access controller data if data is not there it will give null*@
-    <meta charset="utf-8" />
-    <link href="~/StyleSheet.css" rel="stylesheet" />
-</head>
-<body>
+﻿@{
+   
+    ViewData["Title"] = "Persons";
+}
+
     <div class="page-content">
         <h1>Welcome</h1>
         @{
@@ -18,7 +13,7 @@
 
      @*    @foreach (Person person in ViewBag.people) *@
         @foreach (Person person in Model) 
-        {
+        { 
             <div class="box float-left w-50">
                 <h3>@person.PersonName</h3>
                 <table class="table w-100">
@@ -43,7 +38,3 @@
             <a href="/person-with-product">Person with Product</a>
         </div>
     </div>
-
-
-</body>
-</html>

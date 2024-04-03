@@ -1,0 +1,13 @@
+﻿﻿@{
+   
+    ViewData["Title"] = "About";
+}
+
+<div> About page</div>
+<partial name="_ListPartialView"></partial>
+
+ @await Html.PartialAsync("_ListPartialView");
+
+@* @{ 
+    await Html.RenderPartialAsync("_ListPartialView");   //this one is better for rendering
+} *@

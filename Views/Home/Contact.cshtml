@@ -1,0 +1,34 @@
+﻿﻿@{
+   
+    ViewData["Title"] = "Contact";
+}
+<h1>Contact</h1>
+<p>contact details here</p>
+<button class="button button-blue-back" type="button" id="button-load">Load Programming Languages</button>
+
+<div class="box programming-languages-content">
+@* @{
+    ListModel listModel = new ListModel();
+    listModel.ListTitle = "Programming Languages";
+    listModel.ListItems = new List<string>()
+ {
+  "Java",
+  "C#",
+  "Python"
+ };
+
+    await Html.RenderPartialAsync("_StrongTypedListPartialView", listModel);
+} *@
+
+@section footer_section
+{
+    <p>Contact support: 98348734873984734</p>
+} 
+
+<script>
+    document.querySelector("#button-load").addEventListener("click", async function() {
+       var response = await fetch("programming-languages");
+       var languages = await response.text();
+       document.querySelector(".programming-languages-content").innerHTML = languages;
+    });
+</script>

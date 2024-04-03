@@ -46,6 +46,38 @@ namespace DotNetCoreBasicProject.Controllers
             //Views/Products/All.cshtml
             //Views/Shared/All.cshtml
         }
+        [Route("about-company")]
+        public IActionResult About()
+        {
+            ViewData["ListTitle"] = "Cities";
+            ViewData["ListItems"] = new List<string>() {
+        "Paris",
+        "New York",
+        "New Mumbai",
+        "Rome"
+      };
+            return View();
+        }
 
+        [Route("contact-support")]
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        [Route("programming-languages")]
+        public IActionResult ProgrammingLanguages()
+        {
+            ListModel listModel = new ListModel()
+            {
+                ListTitle = "Programming Languages List",
+                ListItems = new List<string>() {
+          "Python",
+          "C#",
+          "Go"
+        }
+            };
+
+            return PartialView("_StrongTypedListPartialView", listModel);
+        }
     }
 }
