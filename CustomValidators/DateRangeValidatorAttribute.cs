@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace ModelValidationsExample.CustomValidators
+namespace DotNetCoreBasicProject.CustomValidators
 {
     public class DateRangeValidatorAttribute : ValidationAttribute
     {

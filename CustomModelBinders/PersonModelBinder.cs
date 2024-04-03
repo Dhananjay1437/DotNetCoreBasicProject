@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using ModelValidationsExample.Models;
+using DotNetCoreBasicProject.Models;
 
-namespace ModelValidationsExample.CustomModelBinders
+namespace DotNetCoreBasicProject.CustomModelBinders
 {
     public class PersonModelBinder : IModelBinder
     {

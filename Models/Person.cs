@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
-using ModelValidationsExample.CustomValidators;
+using DotNetCoreBasicProject.CustomValidators;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Reflection;
 
-namespace ModelValidationsExample.Models
+namespace DotNetCoreBasicProject.Models
 {
     public class Person : IValidatableObject
     {
@@ -50,7 +51,7 @@ namespace ModelValidationsExample.Models
         public DateTime? ToDate { get; set; }
 
         public int? Age { get; set; }
-
+        public Gender PersonGender { get; set; }
 
         public override string ToString()
         {
@@ -64,5 +65,10 @@ namespace ModelValidationsExample.Models
                 yield return new ValidationResult("Either of Date of Birth or Age must be supplied", new[] { nameof(Age) });
             }
         }
+       
+    }
+    public enum Gender
+    {
+        Male, Female, Other
     }
 }

@@ -1,0 +1,76 @@
+﻿﻿@using DotNetCoreBasicProject.Models
+@{
+    string appTitle = "Asp.Net Core Demo App";
+    List<Person> people = new List<Person>()
+    {
+        new Person() { PersonName = "John", DateOfBirth = DateTime.Parse("2000-05-06"), PersonGender = Gender.Male},
+        new Person() { PersonName = "Linda", DateOfBirth = DateTime.Parse("2005-01-09"), PersonGender = Gender.Female},
+        new Person() { PersonName = "Susan", DateOfBirth = DateTime.Parse("2008-07-12"), PersonGender = Gender.Other}
+    };
+    double? GetAge(DateTime? dateOfBirth)
+    {
+        if (dateOfBirth is not null) 
+        {
+            return Math.Round((DateTime.Now - dateOfBirth.Value).TotalDays / 365.25);
+        }
+        else
+        {
+            return null;
+        }
+    }
+    string alertMessage = $"<script>alert('{people.Count} people found')</script>";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@appTitle</title>
+    <meta charset="utf-8" />
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    @Html.Raw(alertMessage)
+    <h1>Welcome</h1>
+    @* 
+      @for (int i = 0; i < 2; i++)
+    {
+    Person person = people[i]; *@
+        @foreach (var person in people)
+      { 
+          // <text>Hello to</text>
+        @*<span>Hello to</span>*@
+        @:Hello to 
+        <div>
+            @person.PersonName
+            <span>, </span>
+            <span>@person.PersonGender</span>
+            @if (person.DateOfBirth != null)
+            {
+                <span>@person.DateOfBirth.Value.ToString("MM/dd/yyyy")</span>
+                <span>@GetAge(person.DateOfBirth) years old</span>
+            }
+            else
+            {
+                <span>No Data Available</span>
+            }
+            @switch (person.PersonGender)
+            {
+                case Gender.Male:
+                    <p>November 19 is International Men's Day</p>
+                    ;
+                    break;
+
+                case Gender.Female:
+                    <p>March 8 is International Women's Day</p>
+                    ;
+                    break;
+
+                case Gender.Other:
+                    <p>March 31 is International Transgender's Day</p>
+                    ; break;
+
+            }
+        </div>
+    }
+
+</body>
+</html>

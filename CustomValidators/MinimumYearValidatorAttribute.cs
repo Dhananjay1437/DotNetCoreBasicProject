@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ModelValidationsExample.CustomValidators
+namespace DotNetCoreBasicProject.CustomValidators
 {
     public class MinimumYearValidatorAttribute : ValidationAttribute
     {

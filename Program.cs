@@ -2,6 +2,7 @@ using DotNetCoreBasicProject.CustomMiddleware;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<MyCustomMiddleware>();
 builder.Services.AddControllers().AddXmlSerializerFormatters();
+builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 //app.MapGet("/", () => "Hello World!");

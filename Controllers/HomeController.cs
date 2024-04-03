@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using ModelValidationsExample.Models;
+using DotNetCoreBasicProject.Models;
 
 namespace DotNetCoreBasicProject.Controllers
 {
@@ -16,7 +16,7 @@ namespace DotNetCoreBasicProject.Controllers
 
         // public IActionResult Index(Person person)   //use for form-data,x-www-urlincoding or query binding if you want
        
-        public IActionResult Index([FromBody] Person person, [FromHeader(Name = "User-Agent")] string UserAgent)
+        public IActionResult Register([FromBody] Person person, [FromHeader(Name = "User-Agent")] string UserAgent)
         {
             if (!ModelState.IsValid)
             {
@@ -28,5 +28,24 @@ namespace DotNetCoreBasicProject.Controllers
 
             return Content($"{person},{UserAgent}");
         }
+
+
+       
+        [Route("/Home")]
+        public IActionResult Index()
+        {
+            //Views/Home/Index.cshtml
+            //return View("abc"); //abc.cshtml
+            //return new ViewResult() { ViewName = "abc" };
+            return View();
+        }
+        [Route("products/all")]
+        public IActionResult All()
+        {
+            return View();
+            //Views/Products/All.cshtml
+            //Views/Shared/All.cshtml
+        }
+
     }
 }
